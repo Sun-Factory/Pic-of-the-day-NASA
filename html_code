@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>NASA PIC OF THE DAY</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div id="imageContainer"></div>
+
+    <script>
+      // Chamada à API da NASA para obter a imagem do dia
+      const API_KEY = "rsflyPTA5Jbl9uayZklIizoBGCfF7jxv0ypLfC05";
+      const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
+
+      fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+          // Cria um elemento de imagem e o adiciona à página
+          const img = document.createElement("img");
+          img.src = data.url;
+          img.alt = data.title;
+          document.getElementById("imageContainer").appendChild(img);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
